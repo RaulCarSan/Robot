@@ -10,10 +10,18 @@ public enum Orientacion {
     OESTE("Oeste"),
     NOROESTE("Noroeste");
 
-    private final String orientacion;
+
+    private  String orientacion;
 
     private Orientacion(String orientacion){
         this.orientacion = orientacion;
 
     }
+
+    @Override
+    public String toString() {
+        return orientacion;
+    }
+
+
 }
