@@ -9,13 +9,13 @@ public record Zona(int ancho, int alto) {
     public static final int ALTURA_MINIMA = 10;
 
 
+    public Zona(){
+        this(ANCHO_MINIMO, ALTURA_MINIMA);
+    }
+
     public Zona{
         validarAncho(ancho);
         validarAlto(alto);
-    }
-
-    public Zona(){
-        this(ANCHO_MINIMO, ALTURA_MINIMA);
     }
 
     private void validarAncho(int ancho) {
