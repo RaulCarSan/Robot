@@ -20,23 +20,37 @@ public class Robot {
     }
 
     public Robot(Zona zona){
-        this.zona = zona;
+        this.zona = Objects.requireNonNull(zona,"La zona no puede ser nula.");
+        coordenada = zona.getCentro();
+        orientacion = Orientacion.NORTE;
     }
 
     public Robot(Zona zona, Orientacion orientacion){
-        this.zona = zona;
-        this.orientacion = orientacion;
+        this.zona = Objects.requireNonNull(zona,"La zona no puede ser nula.");
+        this.orientacion = Objects.requireNonNull(orientacion,"La orientación no puede ser nula.");
+        coordenada = zona.getCentro();
     }
 
     public Robot(Zona zona, Orientacion orientacion, Coordenada coordenada){
-        this.zona = zona;
-        this.coordenada = coordenada;
-        this.orientacion = orientacion;
+
+        if (coordenada == null){
+            throw new NullPointerException("La coordenada no puede ser nula.");
+        }
+
+        this.zona = Objects.requireNonNull(zona,"La zona no puede ser nula.");
+
+        if (zona.pertenece(coordenada) == false){
+            throw  new IllegalArgumentException("La coordenada no pertenece a la zona.");
+        }
+
+        this.coordenada = Objects.requireNonNull(coordenada,"La coordenada no puede ser nula");
+        this.orientacion = Objects.requireNonNull(orientacion,"La orientación no puede ser nula.");
     }
 
     public Robot(Robot robot){
+        Objects.requireNonNull(robot,"El robot no puede ser nulo.");
         this.zona = new Zona(robot.getZona().ancho(), robot.getZona().alto());
-        this.coordenada = new Coordenada(coordenada.x(), coordenada.y());
+        this.coordenada =new Coordenada(robot.coordenada.x(), robot.coordenada.y());
         this.orientacion = robot.getOrientacion();
     }
 
@@ -148,7 +162,7 @@ public class Robot {
 
             case SUROESTE -> orientacion = Orientacion.SUR;
 
-            case SUR -> orientacion = Orientacion.SUROESTE;
+            case SUR -> orientacion = Orientacion.SURESTE;
 
             case SURESTE -> orientacion = Orientacion.ESTE;
 
