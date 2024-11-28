@@ -3,6 +3,8 @@ package org.iesalandalus.programacion.robot.vista;
 import org.iesalandalus.programacion.robot.modelo.*;
 import org.iesalandalus.programacion.utilidades.Entrada;
 
+import java.util.Objects;
+
 public class Consola {
 
     private Consola() {
@@ -117,6 +119,25 @@ public class Consola {
         return new Coordenada(x,y);
     }
 
-    public static char
+    public static char elegirComando(){
+        char comando;
+
+
+        System.out.println("Elige un comando: ");
+        comando = Entrada.caracter();
+
+        return comando;
+    }
+
+    public static void MostarRobot(ControladorRobot controladorRobot){
+        Objects.requireNonNull(controladorRobot,"El robot no puede ser nulo.");
+        System.out.println(controladorRobot.getRobot());
+    }
+
+    public static void despedirse(){
+        System.out.println("Adios.");
+    }
+
+
 
 }
