@@ -186,7 +186,7 @@ public class Robot {
 
     @Override
     public String toString() {
-        return String.format("[zona=%s, coordenada=%s, orientacion=%s]", zona, coordenada, orientacion);
+        return String.format("[Zona: Ancho=%s,Alto=%s, Coordenadas: X=%s, Y=%s, Orientacion=%s]", zona.alto(),zona.ancho(), coordenada.x(), coordenada.y(), orientacion);
     }
 
 }
