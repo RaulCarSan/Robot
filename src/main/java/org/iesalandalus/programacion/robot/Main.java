@@ -96,7 +96,7 @@ public class Main {
     private static ControladorRobot controladorRobotDefecto(){
 
         return new ControladorRobot(new Robot());
-    }
+    }a
 
     private static void ejecutarComando(char comando){
 
