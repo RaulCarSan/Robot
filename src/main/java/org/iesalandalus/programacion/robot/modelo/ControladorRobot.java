@@ -13,7 +13,7 @@ public class ControladorRobot {
         return new Robot(robot);
     }
 
-    public void ejecutar(char comando) throws RobotExcepcion {
+    public  void ejecutar(char comando) throws RobotExcepcion {
         switch (comando){
             case 'i', 'I' -> robot.girarALaIzquierda();
 
