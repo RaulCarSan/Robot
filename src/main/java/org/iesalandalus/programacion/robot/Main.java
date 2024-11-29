@@ -7,24 +7,27 @@ import org.iesalandalus.programacion.robot.vista.Consola;
 
 
 
-
 public class Main {
 
     private static void ejecutarOpcion(int opcion) {
 
+        ControladorRobot controladorRobot = null;
 
             switch (opcion) {
                 case 1 -> {
-                    Consola.MostarRobot(controladorRobotDefecto());
+
+                    controladorRobot = controladorRobotDefecto();
+                    Consola.MostarRobot(controladorRobot);
 
                     System.out.println("___________________________________________________");
 
-                    ejecutarOpcion(Consola.elegirOpcion());
+                    Main.ejecutarOpcion(Consola.elegirOpcion());
                 }
 
                 case 2 -> {
                     try {
-                        Consola.MostarRobot(controladorRobotZona());
+                        controladorRobot = controladorRobotZona();
+                        Consola.MostarRobot(controladorRobot);
                     } catch (IllegalArgumentException e) {
                         System.out.println("Error: " + e.getMessage());
                     }
@@ -36,7 +39,8 @@ public class Main {
 
                 case 3 -> {
                     try {
-                        Consola.MostarRobot(controladorRobotZonaOrientacion());
+                        controladorRobot = controladorRobotZonaOrientacion();
+                        Consola.MostarRobot(controladorRobot);
                     } catch (IllegalArgumentException e) {
                         System.out.println("Error: " + e.getMessage());
                     }
@@ -46,12 +50,15 @@ public class Main {
 
                 case 4 -> {
                     try {
-                        Consola.MostarRobot(controlarRobotZonaOrientacionCoordenadas());
+                        controladorRobot = controlarRobotZonaOrientacionCoordenadas();
+                        Consola.MostarRobot(controladorRobot);
                     } catch (IllegalArgumentException e) {
                         System.out.println("Error: " + e.getMessage());
                     }
 
+
                     System.out.println("___________________________________________________");
+
 
                     ejecutarOpcion(Consola.elegirOpcion());
 
@@ -93,9 +100,7 @@ public class Main {
 
     private static void ejecutarComando(char comando){
 
-
         try {
-             ControladorRobot controladorRobot = new ControladorRobot(new Robot());
              controladorRobot.ejecutar(comando);
         } catch (IllegalArgumentException | RobotExcepcion e) {
             System.out.println("Error: " + e.getMessage());
