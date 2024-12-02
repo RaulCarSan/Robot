@@ -8,10 +8,11 @@ import org.iesalandalus.programacion.robot.vista.Consola;
 
 
 public class Main {
+    public  static ControladorRobot controladorRobot = null;
 
     private static void ejecutarOpcion(int opcion) {
 
-        ControladorRobot controladorRobot = null;
+
 
             switch (opcion) {
                 case 1 -> {
@@ -67,7 +68,15 @@ public class Main {
 
                 case 5 -> {
 
-                    ejecutarComando(Consola.elegirComando());
+                    if (controladorRobot == null){
+                        controladorRobot = controladorRobotDefecto();
+                        System.out.println("El robot no puede ser nulo.");
+                    }
+
+                    ejecutarComando(controladorRobot,Consola.elegirComando());
+                    Consola.MostarRobot(controladorRobot);
+
+
 
                     System.out.println("___________________________________________________");
 
@@ -76,6 +85,7 @@ public class Main {
                 }
 
                 case 6 -> {
+
                     Consola.despedirse();
                 }
             }
@@ -96,9 +106,10 @@ public class Main {
     private static ControladorRobot controladorRobotDefecto(){
 
         return new ControladorRobot(new Robot());
-    }a
+    }
 
-    private static void ejecutarComando(char comando){
+    private static void ejecutarComando(ControladorRobot controladorRobot,char comando){
+
 
         try {
              controladorRobot.ejecutar(comando);

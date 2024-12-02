@@ -26,7 +26,6 @@ public class Consola {
 
     public static int elegirOpcion(){
         int eleccion = 0;
-        Robot robot = new Robot();
         System.out.println("Elige unas de las opciones : ");
         do {
             Consola.mostrarMenu();
