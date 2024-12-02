@@ -47,7 +47,7 @@ public class Consola {
             try {
                 zona = new Zona(ancho,altura);
             }catch (IllegalArgumentException e){
-                throw new IllegalArgumentException();
+                System.out.println("La zona no es valida.");
             }
 
         } while (zona == null);

@@ -5,6 +5,7 @@ import org.iesalandalus.programacion.robot.modelo.Robot;
 import org.iesalandalus.programacion.robot.modelo.RobotExcepcion;
 import org.iesalandalus.programacion.robot.vista.Consola;
 
+import java.util.Objects;
 
 
 public class Main {
@@ -29,7 +30,7 @@ public class Main {
                     try {
                         controladorRobot = controladorRobotZona();
                         Consola.MostarRobot(controladorRobot);
-                    } catch (IllegalArgumentException e) {
+                    } catch (IllegalArgumentException  e) {
                         System.out.println("Error: " + e.getMessage());
                     }
 
@@ -96,6 +97,7 @@ public class Main {
     }
 
     private static ControladorRobot controladorRobotZonaOrientacion() {
+
         return new ControladorRobot(new Robot(Consola.elegirZona(), Consola.elegirOrientacion()));
     }
 
