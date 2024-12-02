@@ -32,7 +32,6 @@ public class Consola {
             System.out.print("Opción elegida: ");
             eleccion = Entrada.entero();
         } while (eleccion < 1 || eleccion > 6 );
-
         return eleccion;
     }
 
@@ -47,9 +46,8 @@ public class Consola {
             try {
                 zona = new Zona(ancho,altura);
             }catch (IllegalArgumentException e){
-                System.out.println("La zona no es valida.");
+                System.out.println("Error: La zona no es valida.");
             }
-
         } while (zona == null);
 
         return zona;
@@ -112,7 +110,6 @@ public class Consola {
 
             default -> System.out.println("No has elegido ninguna opción.");
         }
-
         return orientacion;
 
     }
@@ -123,7 +120,6 @@ public class Consola {
         int x = Entrada.entero();
         System.out.print("Elige la coordenada y: ");
         int y = Entrada.entero();
-
         return new Coordenada(x,y);
     }
 
@@ -139,7 +135,6 @@ public class Consola {
             comando = Entrada.caracter();
 
         }while (comando != 'A' && comando !='a' && comando != 'D' && comando != 'd' && comando != 'I' && comando !='i');
-
         return comando;
     }
 

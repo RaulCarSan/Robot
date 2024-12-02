@@ -32,16 +32,11 @@ public class Robot {
     }
 
     public Robot(Zona zona, Orientacion orientacion, Coordenada coordenada){
-
         this.coordenada = Objects.requireNonNull(coordenada, "La coordenada no puede ser nula.");
-
-
         this.zona = Objects.requireNonNull(zona,"La zona no puede ser nula.");
-
         if (!zona.pertenece(coordenada)){
             throw  new IllegalArgumentException("La coordenada no pertenece a la zona.");
         }
-
         this.orientacion = Objects.requireNonNull(orientacion,"La orientación no puede ser nula.");
     }
 
@@ -70,11 +65,9 @@ public class Robot {
     }
 
     public void setCoordenada(Coordenada coordenada) throws RobotExcepcion {
-
         if (zona.pertenece(coordenada) == false){
             throw new RobotExcepcion("Las coordenadas no pueden estar fuera de la zona");
         }
-
         this.coordenada = coordenada;
     }
 
@@ -118,7 +111,6 @@ public class Robot {
                                 }
 
         }
-
         try {
             setCoordenada(new Coordenada(nuevaX,nuevaY));
         } catch (RobotExcepcion e) {
@@ -127,7 +119,6 @@ public class Robot {
     }
 
     public void girarALaDerecha(){
-
         switch (orientacion){
 
             case NORTE -> orientacion = Orientacion.NORESTE;
@@ -146,7 +137,6 @@ public class Robot {
 
             case NOROESTE -> orientacion = Orientacion.NORTE;
         }
-
     }
 
 

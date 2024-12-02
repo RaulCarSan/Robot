@@ -12,17 +12,16 @@ public class Main {
     public  static ControladorRobot controladorRobot = null;
 
     private static void ejecutarOpcion(int opcion) {
+        String barra = "___________________________________________________";
 
+        String error = "Error: ";
 
 
             switch (opcion) {
                 case 1 -> {
-
                     controladorRobot = controladorRobotDefecto();
                     Consola.MostarRobot(controladorRobot);
-
-                    System.out.println("___________________________________________________");
-
+                    System.out.println(barra);
                     Main.ejecutarOpcion(Consola.elegirOpcion());
                 }
 
@@ -31,11 +30,9 @@ public class Main {
                         controladorRobot = controladorRobotZona();
                         Consola.MostarRobot(controladorRobot);
                     } catch (IllegalArgumentException  e) {
-                        System.out.println("Error: " + e.getMessage());
+                        System.out.println(error + e.getMessage());
                     }
-
-                    System.out.println("___________________________________________________");
-
+                    System.out.println(barra);
                     ejecutarOpcion(Consola.elegirOpcion());
                 }
 
@@ -44,9 +41,9 @@ public class Main {
                         controladorRobot = controladorRobotZonaOrientacion();
                         Consola.MostarRobot(controladorRobot);
                     } catch (IllegalArgumentException e) {
-                        System.out.println("Error: " + e.getMessage());
+                        System.out.println(error + e.getMessage());
                     }
-                    System.out.println("___________________________________________________");
+                    System.out.println(barra);
                     ejecutarOpcion(Consola.elegirOpcion());
                 }
 
@@ -55,13 +52,9 @@ public class Main {
                         controladorRobot = controlarRobotZonaOrientacionCoordenadas();
                         Consola.MostarRobot(controladorRobot);
                     } catch (IllegalArgumentException e) {
-                        System.out.println("Error: " + e.getMessage());
+                        System.out.println(error + e.getMessage());
                     }
-
-
-                    System.out.println("___________________________________________________");
-
-
+                    System.out.println(barra);
                     ejecutarOpcion(Consola.elegirOpcion());
 
                 }
@@ -73,20 +66,13 @@ public class Main {
                         controladorRobot = controladorRobotDefecto();
                         System.out.println("El robot no puede ser nulo.");
                     }
-
                     ejecutarComando(controladorRobot,Consola.elegirComando());
                     Consola.MostarRobot(controladorRobot);
-
-
-
-                    System.out.println("___________________________________________________");
-
+                    System.out.println(barra);
                     ejecutarOpcion(Consola.elegirOpcion());
-
                 }
 
                 case 6 -> {
-
                     Consola.despedirse();
                 }
             }
@@ -97,7 +83,6 @@ public class Main {
     }
 
     private static ControladorRobot controladorRobotZonaOrientacion() {
-
         return new ControladorRobot(new Robot(Consola.elegirZona(), Consola.elegirOrientacion()));
     }
 
@@ -106,13 +91,10 @@ public class Main {
     }
 
     private static ControladorRobot controladorRobotDefecto(){
-
         return new ControladorRobot(new Robot());
     }
 
     private static void ejecutarComando(ControladorRobot controladorRobot,char comando){
-
-
         try {
              controladorRobot.ejecutar(comando);
         } catch (IllegalArgumentException | RobotExcepcion e) {
@@ -121,7 +103,6 @@ public class Main {
     }
 
     public static void main(String[] args) {
-
         ejecutarOpcion(Consola.elegirOpcion());
     }
 }
